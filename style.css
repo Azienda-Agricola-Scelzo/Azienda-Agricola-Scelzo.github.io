@@ -1,6 +1,5 @@
 /* Base CSS */
 body {
-    background-color: #442f1b;
     margin: 0;
     padding: 0;
 }
@@ -8,23 +7,17 @@ body {
 .home {
     background-image: url(terreno.jpg);
     background-size: cover;
+    background-position: center; /* Centra l'immagine */
     background-repeat: no-repeat;
-    height: 100%;
+    height: 100vh; /* Altezza intera del dispositivo */
+    width: 100%;
 }
 
 header {
     font-style: italic;
 }
 
-main {
-    margin: 3% 10%;
-    font-weight: bold;
-    font-size: large;
-    font-style: italic;
-    color: rgb(255, 255, 255);
-    text-align: justify;
-}
-
+/* Navbar link */
 .navbar-nav a {
     color: rgb(128, 128, 128);
     transition: color 0.3s ease;
@@ -35,7 +28,10 @@ main {
 .navbar-nav a:hover {
     color: rgb(0, 0, 0);
     font-weight: bolder;
-    font-size: larger;
+}
+
+.button_compra {
+    margin-left: auto; /* Allinea a destra */
 }
 
 .button {
@@ -64,16 +60,7 @@ footer {
     padding: 10px;
 }
 
-/* Navbar: Aggiustamento per schermi piccoli */
-.navbar-toggler {
-    border-color: rgba(0, 0, 0, 0.1);
-}
-
-.button_compra {
-    margin-top: 0;
-    margin-left: auto; /* Allinea il pulsante a destra */
-}
-
+/* Media query per schermi piccoli */
 @media (max-width: 992px) {
     .navbar-collapse {
         text-align: center;
@@ -90,11 +77,6 @@ footer {
 }
 
 @media (max-width: 768px) {
-    main {
-        margin: 5%;
-        font-size: medium;
-    }
-
     .navbar-nav a {
         font-size: medium;
         padding: 10px 0;
@@ -102,27 +84,13 @@ footer {
 
     .button_compra {
         margin: 10px auto;
-        text-align: center;
-    }
-
-    .button {
-        font-size: 13px;
     }
 }
 
 @media (max-width: 480px) {
-    main {
-        margin: 3%;
-        font-size: small;
-    }
-
     .navbar-brand img {
         width: 35px;
         height: 35px;
-    }
-
-    .navbar-brand {
-        font-size: 16px;
     }
 
     .navbar-toggler {
@@ -132,10 +100,5 @@ footer {
     .button {
         font-size: 12px;
         padding: 0.5em 0.8em;
-    }
-
-    .button_compra {
-        text-align: center;
-        margin-top: 10px;
     }
 }
