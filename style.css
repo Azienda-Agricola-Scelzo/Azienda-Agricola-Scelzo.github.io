@@ -1,121 +1,141 @@
-/* Schermi fino a 768px (tablet e smartphone) */
-@media (max-width: 768px) {
-    .home {
-        background-size: cover;
-        height: auto;
+/* Base CSS */
+body {
+    background-color: #442f1b;
+    margin: 0;
+    padding: 0;
+}
+
+.home {
+    background-image: url(terreno.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+
+header {
+    font-style: italic;
+}
+
+main {
+    margin: 3% 10%;
+    font-weight: bold;
+    font-size: large;
+    font-style: italic;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+}
+
+.navbar-nav a {
+    color: rgb(128, 128, 128);
+    transition: color 0.3s ease;
+    font-size: large;
+    font-weight: bold;
+}
+
+.navbar-nav a:hover {
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    font-size: larger;
+}
+
+.button {
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #865434;
+    background: transparent;
+    transition: all 0.3s;
+    outline: 2px solid #865434;
+}
+
+.button:hover {
+    background-color: #865434;
+    color: white;
+    box-shadow: 2px 3px 10px -2px #865434;
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(51, 38, 32);
+    color: white;
+    padding: 10px;
+}
+
+/* Navbar: Aggiustamento per schermi piccoli */
+.navbar-toggler {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.button_compra {
+    margin-top: 0;
+    margin-left: auto; /* Allinea il pulsante a destra */
+}
+
+@media (max-width: 992px) {
+    .navbar-collapse {
+        text-align: center;
     }
 
+    .navbar-nav {
+        margin: 0 auto;
+    }
+
+    .button_compra {
+        margin: 10px auto;
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
     main {
         margin: 5%;
         font-size: medium;
     }
 
-    .navbar-collapse {
-        padding-left: 5%;
+    .navbar-nav a {
+        font-size: medium;
+        padding: 10px 0;
     }
 
-    .form {
-        width: 90%;
-        left: 5%;
-        padding: 20px;
-        margin-top: 20px;
-    }
-
-    .inputForm {
-        height: 40px;
-    }
-
-    .button-submit {
-        height: 45px;
-        font-size: 14px;
-    }
-
-    h2, h3 {
-        font-size: 1.5rem;
-    }
-
-    p {
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    .img_prodotti {
-        width: 150px;
-        height: 180px;
-    }
-
-    .card {
-        padding: 15px;
-        transform: scale(1.05);
-    }
-
-    .card:hover {
-        transform: scale(1.1);
+    .button_compra {
+        margin: 10px auto;
+        text-align: center;
     }
 
     .button {
         font-size: 13px;
-        padding: 0.8em 1.5em;
-    }
-
-    .button_compra {
-        position: static;
-        margin: 10px auto;
-        display: block;
-        text-align: center;
-    }
-
-    .button_signin {
-        font-size: 20px;
     }
 }
 
-/* Schermi più piccoli di 480px (smartphone piccoli) */
 @media (max-width: 480px) {
     main {
         margin: 3%;
         font-size: small;
     }
 
-    .navbar-nav a {
-        font-size: medium;
+    .navbar-brand img {
+        width: 35px;
+        height: 35px;
     }
 
-    .form {
-        padding: 15px;
+    .navbar-brand {
+        font-size: 16px;
     }
 
-    .input {
-        width: 80%;
-    }
-
-    .button-submit {
-        font-size: 12px;
-    }
-
-    h2, h3 {
-        font-size: 1.2rem;
-    }
-
-    .img_prodotti {
-        width: 120px;
-        height: 150px;
-    }
-
-    .card {
-        padding: 10px;
-    }
-
-    .card:hover {
-        transform: scale(1.05);
+    .navbar-toggler {
+        font-size: 1rem;
     }
 
     .button {
         font-size: 12px;
+        padding: 0.5em 0.8em;
     }
 
     .button_compra {
-        font-size: small;
-        margin: 10px auto;
+        text-align: center;
+        margin-top: 10px;
     }
 }
