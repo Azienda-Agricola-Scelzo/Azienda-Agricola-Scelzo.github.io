@@ -1,0 +1,187 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #442f1b; /* Colore marrone caldo per lo sfondo */
+    color: #333;
+    line-height: 1.6;
+}
+
+header{
+    font-style: italic;
+}
+
+main{
+    font-weight: bolder;
+    font-size: large;
+    font-style: italic;
+    color: rgb(255, 255, 255);
+    text-align: justify;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+tr, td{
+    padding-bottom: 3%;
+}
+
+h2, h3{
+    text-align: center;
+    font-weight: bolder;
+}
+
+p{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-align: justify;
+}
+
+.p_footer{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+
+.navbar-nav a {
+    color: rgb(128, 128, 128);
+    transition: color 0.3s ease; 
+    font-size: large;
+    font-weight: bold;
+}
+
+.navbar-collapse{
+    padding-left: 19%;
+}
+
+.navbar-nav a:hover {
+color: rgb(0, 0, 0); 
+font-weight: bolder;
+font-size: larger;
+}
+
+/* Contenuto principale */
+main.container {
+    padding: 50px 0;
+}
+
+
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ffffff; 
+    margin-bottom: 30px;
+    font-weight: 700;
+}
+
+.row {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Card prodotto */
+.card {
+    background-color: #fff;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    left: 70px;
+    max-width: 320px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-img-top {
+    width: 100%;
+    height: 350px; /* Aumentata l'altezza dell'immagine */
+    object-fit: cover; /* Assicura che l'immagine si adatti senza distorsioni */
+    border-bottom: 5px solid #6F4F28; /* Aggiunta una linea sotto l'immagine per separarla visivamente */
+}
+
+.card-body {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    background-color: #fff; /* Assicurati che il corpo della card sia bianco */
+}
+
+.card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #6F4F28; /* Marrone scuro per i titoli */
+    margin-bottom: 10px;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #6F4F28;
+}
+
+.form-select, .form-control {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.btn-success {
+    background-color: #3e2b14; /* Marrone scuro per il bottone */
+    color: white;
+    font-weight: 600;
+    border-radius: 5px;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-success:hover {
+    background-color: #7c4a22; /* Arancio per l'hover */
+}
+
+.footpagine{
+    text-align: center;
+    background-color: rgb(51, 38, 32);
+    font-style: italic;
+    color: white;
+    padding: 2%;
+    border-radius: 30px;
+    margin: 1.5%;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .row {
+        justify-content: center;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 90%;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}

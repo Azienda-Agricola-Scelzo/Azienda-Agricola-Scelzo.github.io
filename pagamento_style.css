@@ -1,0 +1,108 @@
+/* Impostazioni generali */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #D2B29A; /* Nocciola (marrone chiaro) */
+    color: #333; /* Colore del testo principale */
+    margin: 0;
+    padding: 0;
+    font-weight: bolder;
+  }
+  
+  /* Stile del header */
+  header {
+    background-color: #6F4F28; /* Marrone scuro */
+    color: white;
+    padding: 20px 0;
+    font-weight: bolder;
+  }
+  
+  header h2 {
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  /* Stile del main */
+  main {
+    padding: 20px;
+  }
+  
+  /* Sezione carrello */
+  h3 {
+    font-size: 1.5rem;
+    color: #6F4F28; /* Marrone scuro */
+  }
+  
+  #carrello {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background-color: #F8F8F8;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Totale */
+  #totale {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #6F4F28;
+  }
+  
+  /* Modulo di pagamento */
+  h3 + form {
+    margin-top: 30px;
+  }
+  
+  .form-label {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  .form-control {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  /* Pulsante PayPal */
+  #paypal-button-container {
+    margin-top: 30px;
+    text-align: center;
+    margin-left: 250px;
+  }
+  
+  /* Responsività */
+  @media (max-width: 768px) {
+    header h2 {
+      font-size: 1.5rem;
+    }
+  
+    .card-title {
+      font-size: 1rem;
+    }
+  
+    #totale {
+      font-size: 1rem;
+    }
+  
+    .form-label, .form-control {
+      font-size: 0.875rem;
+    }
+  }  

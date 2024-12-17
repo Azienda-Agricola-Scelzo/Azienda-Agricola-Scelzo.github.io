@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <title>Pagamento con PayPal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="pagamento_style.css" rel="stylesheet">
+</head>
+<body>
+  <header class="text-center">
+    <h2>Pagina di Pagamento</h2>
+  </header>
+  <main class="container mt-4">
+    <!-- Sezione carrello -->
+    <h3>Prodotti nel tuo carrello:</h3>
+    <div id="carrello"></div>
+    <h4 id="totale" class="mt-3"></h4>
+    
+    <!-- Modulo per i dati di consegna -->
+    <h3 class="mt-5">Dati di consegna:</h3>
+    <form id="formPagamento">
+      <div class="mb-3">
+        <label for="nome" class="form-label">Nome completo</label>
+        <input type="text" class="form-control" id="nome" required>
+      </div>
+      <div class="mb-3">
+        <label for="indirizzo" class="form-label">Indirizzo</label>
+        <input type="text" class="form-control" id="indirizzo" required>
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Numero di telefono</label>
+        <input type="text" class="form-control" id="telefono" required>
+      </div>
+    </form>
+
+    <!-- Sezione pagamento con PayPal -->
+    <h3 class="mt-5" style="align-items: center; text-align: center; color: rgb(81, 59, 40);">Pagamento:</h3>
+    <div id="paypal-button-container"></div>
+  </main>
+
+  <!-- PayPal SDK -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AWYalQkWLBgRWfbrPuo5-6XQsShMxcyJBp6k2EAYvLuEpX31WyyMnaJM3GOx4pmeYGmYnWG-N7ofy0PI&currency=EUR"></script>
+
+  <script>
+    // Funzione per mostrare i prodotti nel carrello
+    function mostraCarrello() {
+      const carrello = JSON.parse(localStorage.getItem("carrello")) || [];
+      const carrelloDiv = document.getElementById("carrello");
+      carrelloDiv.innerHTML = "";
+
+      let totale = 0;
+      carrello.forEach((item) => {
+        totale += item.prezzo;
+
+        carrelloDiv.innerHTML += `
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title">${item.nome}</h5>
+              <p class="card-text">Peso: ${item.peso}g</p>
+              <p class="card-text">Quantità: ${item.quantita}</p>
+              <p class="card-text">Prezzo: €${item.prezzo.toFixed(2)}</p>
+            </div>
+          </div>
+        `;
+      });
+
+      document.getElementById("totale").innerText = `Totale: €${totale.toFixed(2)}`;
+      return totale.toFixed(2); // Totale da usare per il pagamento
+    }
+
+    // Mostra il carrello all'avvio
+    const totalePagamento = mostraCarrello();
+
+    // Inizializza il pulsante PayPal
+    paypal.Buttons({
+      createOrder: function(data, actions) {
+        const nome = document.getElementById("nome").value;
+        const indirizzo = document.getElementById("indirizzo").value;
+        const email = document.getElementById("email").value;
+        const telefono = document.getElementById("telefono").value;
+
+        // Controlla che i dati siano inseriti
+        if (!nome || !indirizzo || !email || !telefono) {
+          alert("Compila tutti i campi prima di procedere al pagamento.");
+          return actions.reject();
+        }
+
+        // Crea l'ordine
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: totalePagamento // Totale in euro
+            },
+            description: "Acquisto prodotti Azienda Agricola Scelzo"
+          }],
+          payer: {
+            name: { given_name: nome },
+            address: { address_line_1: indirizzo },
+            email_address: email,
+            phone: { phone_type: "MOBILE", phone_number: { national_number: telefono } }
+          }
+        });
+      },
+      onApprove: function(data, actions) {
+        // Finalizza il pagamento
+        return actions.order.capture().then(function(details) {
+          alert(`Pagamento completato con successo da ${details.payer.name.given_name}!`);
+
+          // Salva i dati dell'ordine (puoi inviarli a un server qui)
+          const ordine = {
+            datiUtente: {
+              nome: details.payer.name.given_name,
+              email: details.payer.email_address,
+              indirizzo: details.purchase_units[0].shipping.address.address_line_1,
+            },
+            carrello: JSON.parse(localStorage.getItem("carrello")) || [],
+            totale: totalePagamento,
+          };
+          console.log("Dati ordine:", ordine);
+
+          // Svuota il carrello e reindirizza
+          localStorage.removeItem("carrello");
+          window.location.href = "index.html";
+        });
+      },
+      onError: function(err) {
+        alert("Si è verificato un errore durante il pagamento. Riprova.");
+        console.error(err);
+      }
+    }).render('#paypal-button-container'); // Rendi il pulsante
+  </script>
+</body>
+</html>
